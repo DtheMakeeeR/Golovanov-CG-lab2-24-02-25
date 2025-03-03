@@ -64,5 +64,53 @@ namespace Golovanov_CG_lab2_24_02_25
         {
             backgroundWorker1.CancelAsync();
         }
+
+        private void размытиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new BlurFilter();
+            backgroundWorker1.RunWorkerAsync (filter);
+        }
+
+        private void гауссToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new GaussianFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void чБToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new GrayScaleFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void сепияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Sepia(30);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void яркостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Brightness(30);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void собельToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Sobel(AxisMode.AxisY);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void резкостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Sharpness();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void поворотToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new RotateFilter(90);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }

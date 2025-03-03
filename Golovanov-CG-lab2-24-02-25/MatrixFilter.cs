@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace Golovanov_CG_lab2_24_02_25
 {
+    enum AxisMode
+    {
+        AxisX,
+        AxisY
+    }
     internal class MatrixFilter : Filter
     {
         protected float[,] kernel = null;
@@ -33,7 +38,7 @@ namespace Golovanov_CG_lab2_24_02_25
                     resultB += neighbourColor.B * kernel[k + radiusX, l + radiusY];
                 }
             }
-            throw new NotImplementedException();
+            return Color.FromArgb(Clamp((int)resultR), Clamp((int)resultG), Clamp((int)resultB));
         }
     }
 }
