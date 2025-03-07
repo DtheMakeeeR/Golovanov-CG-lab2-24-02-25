@@ -55,16 +55,22 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GaryWorld.cs" />
     <Compile Include="GaussianFilter.cs" />
     <Compile Include="GrayScaleFilter.cs" />
     <Compile Include="InvertFilter.cs" />
+    <Compile Include="LinearStretch.cs" />
     <Compile Include="MatrixFilter.cs" />
+    <Compile Include="Median.cs" />
+    <Compile Include="MotionBlur.cs" />
+    <Compile Include="Prewitt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rotate.cs" />
     <Compile Include="Sepia.cs" />
     <Compile Include="Sharpness.cs" />
     <Compile Include="Sobel.cs" />
+    <Compile Include="Waves.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

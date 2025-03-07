@@ -12,12 +12,33 @@ namespace Golovanov_CG_lab2_24_02_25
 {
     public partial class Form1 : Form
     {
+        Stack<Bitmap> bitmapStack = new Stack<Bitmap>();
         Bitmap image;
+        bool haveBackup = false;
         public Form1()
         {
             InitializeComponent();
         }
-
+       
+        private void SetBackup()
+        {
+            bitmapStack.Push(image);
+            //backupImage = image;
+            haveBackup = true;
+        }
+        private void CheckBackUp()
+        {
+            haveBackup = bitmapStack.Count != 0;
+            button2.Enabled = haveBackup;
+        }
+        private void GetBackup()
+        {
+            image = bitmapStack.Pop();
+            //image = backupImage;
+            pictureBox1.Image = image;
+            pictureBox1.Refresh();
+            CheckBackUp();
+        }
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog opf = new OpenFileDialog();
@@ -38,6 +59,7 @@ namespace Golovanov_CG_lab2_24_02_25
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            SetBackup();
             Bitmap newImage = ((Filter)e.Argument).ProcessImage(image, backgroundWorker1);
             if (backgroundWorker1.CancellationPending != true)
             {
@@ -56,6 +78,7 @@ namespace Golovanov_CG_lab2_24_02_25
             {
                 pictureBox1.Image = image;
                 pictureBox1.Refresh();
+                CheckBackUp();
             }
             progressBar1.Value = 0;
         }
@@ -95,11 +118,6 @@ namespace Golovanov_CG_lab2_24_02_25
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
-        private void собельToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filter filter = new Sobel(AxisMode.AxisY);
-            backgroundWorker1.RunWorkerAsync(filter);
-        }
 
         private void резкостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -109,7 +127,81 @@ namespace Golovanov_CG_lab2_24_02_25
 
         private void поворотToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Filter filter = new RotateFilter(90);
+            Filter filter = new RotateFilter(45);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void волныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Waves();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void размытиеВДвиженииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new MotionBlur(11);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void осьYToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Prewitt(AxisMode.AxisY);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void осьXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Prewitt(AxisMode.AxisX);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void осьXToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Sobel(AxisMode.AxisX);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GetBackup();
+        }
+
+        private void cохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox1.Image.Save(saveFileDialog.FileName);
+                }
+            }
+            else { MessageBox.Show("Error"); }
+        }
+
+        private void серыйМирToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new GaryWorld();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        
+        private void осьYToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Sobel(AxisMode.AxisY);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void медианныйToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new Sobel(AxisMode.AxisY);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void линейнаяКоррекцияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter filter = new LinearStretch();
             backgroundWorker1.RunWorkerAsync(filter);
         }
     }

@@ -10,7 +10,7 @@ namespace Golovanov_CG_lab2_24_02_25
 {
     public abstract class Filter
     {
-        public Bitmap ProcessImage(Bitmap image, BackgroundWorker worker)
+        public virtual Bitmap ProcessImage(Bitmap image, BackgroundWorker worker)
         {
             Bitmap resultImage = new Bitmap(image.Width, image.Height);
             for (int i = 0; i < image.Width; i++)

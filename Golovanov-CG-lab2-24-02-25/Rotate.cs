@@ -19,8 +19,10 @@ namespace Golovanov_CG_lab2_24_02_25
         {
             int x0 = image.Width / 2;
             int y0 = image.Height / 2;
-            int posX = Clamp((int)((x - x0) * Math.Cos(angle) - (y - y0) * Math.Sin(angle) + x0), 0, image.Width); 
-            int posY = Clamp((int)((x - x0) * Math.Sin(angle) + (y - y0) * Math.Sin(angle) + x0), 0, image.Height);
+            int posX = (int)((x - x0) * Math.Cos(angle) - (y - y0) * Math.Sin(angle) + x0);
+            int posY = (int)((x - x0) * Math.Sin(angle) + (y - y0) * Math.Cos(angle) + y0);
+            if (posX < 0 || posX >= image.Width || posY < 0 || posY >= image.Height)
+                return Color.Black;
             return image.GetPixel(posX, posY);
         }
     }
