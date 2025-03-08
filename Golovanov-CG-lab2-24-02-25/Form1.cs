@@ -72,6 +72,7 @@ namespace Golovanov_CG_lab2_24_02_25
 
         private void инверсияToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CheckBusy();
             InvertFilter filter = new InvertFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
@@ -79,7 +80,6 @@ namespace Golovanov_CG_lab2_24_02_25
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             SetBackup();
-            //CheckBusy();
             Bitmap newImage = ((Filter)e.Argument).ProcessImage(image, backgroundWorker1);
             if (backgroundWorker1.CancellationPending != true)
             {
@@ -173,12 +173,6 @@ namespace Golovanov_CG_lab2_24_02_25
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
-        private void осьYToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CheckBusy();
-            Filter filter = new Prewitt(axisMode);
-            backgroundWorker1.RunWorkerAsync(filter);
-        }
 
         private void осьXToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -275,6 +269,20 @@ namespace Golovanov_CG_lab2_24_02_25
         private void segmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             mode = (Segment)segmentComboBox.SelectedIndex;
+        }
+
+        private void собельToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBusy();
+            Filter filter = new Sobel(axisMode);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void операторПрюитаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBusy();
+            Filter filter = new Prewitt(axisMode);
+            backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void открытиеToolStripMenuItem_Click(object sender, EventArgs e)
