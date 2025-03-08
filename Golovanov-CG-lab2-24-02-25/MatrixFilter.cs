@@ -21,7 +21,7 @@ namespace Golovanov_CG_lab2_24_02_25
             this.kernel = kernel;
         }
 
-        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             int radiusX = kernel.GetLength(0) / 2;
             int radiusY = kernel.GetLength(1) / 2;

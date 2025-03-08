@@ -14,7 +14,7 @@ namespace Golovanov_CG_lab2_24_02_25
         {
             this.coef = coef;
         }
-        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             Color pixel = image.GetPixel(x, y);
             return Color.FromArgb(Clamp(pixel.R + coef), Clamp(pixel.G + coef), Clamp(pixel.B + coef));

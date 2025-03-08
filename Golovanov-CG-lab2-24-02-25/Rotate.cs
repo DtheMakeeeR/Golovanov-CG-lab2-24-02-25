@@ -15,7 +15,7 @@ namespace Golovanov_CG_lab2_24_02_25
             this.angle = angle;
         }
 
-        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             int x0 = image.Width / 2;
             int y0 = image.Height / 2;

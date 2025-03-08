@@ -25,7 +25,7 @@ namespace Golovanov_CG_lab2_24_02_25
             return resultImage;
         }
 
-        public abstract Color CalculateNewPixelColor(Bitmap image, int x, int y);
+        protected abstract Color CalculateNewPixelColor(Bitmap image, int x, int y);
         public int Clamp(int value, int min = 0, int max = 255)
         {
             if (value < min) { return min; }
