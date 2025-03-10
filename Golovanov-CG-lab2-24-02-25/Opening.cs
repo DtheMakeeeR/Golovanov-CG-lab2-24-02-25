@@ -25,7 +25,7 @@ namespace Golovanov_CG_lab2_24_02_25
             resultImage = dil.ProcessImage(resultImage, worker);
             return resultImage;
         }
-        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             return Color.Black;
         }

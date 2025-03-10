@@ -13,7 +13,7 @@ namespace Golovanov_CG_lab2_24_02_25
         {
 
         }
-        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             int posX, posY;
             List<int> redChanel = new List<int>();

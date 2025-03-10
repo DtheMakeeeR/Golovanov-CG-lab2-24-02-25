@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Golovanov_CG_lab2_24_02_25
 {
-    internal class Prewitt: EdgeFilter
+    internal class Sharr : EdgeFilter
     {
-        public Prewitt()
+        public Sharr()
         {
             kernelX = new float[3, 3];
             kernelY = new float[3, 3];
-            float[] stroke = new float[3] { 1, 1, 1 };
+            float[] stroke = new float[3] { -3, -10, -3 };
             for (int i = 0; i < 3; i++)
             {
                 kernelX[i, 0] = -stroke[i];

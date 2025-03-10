@@ -14,7 +14,7 @@ namespace Golovanov_CG_lab2_24_02_25
         {
             radius = r;
         }
-        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             List<int> allR = new List<int>();
             List<int> allG = new List<int>();

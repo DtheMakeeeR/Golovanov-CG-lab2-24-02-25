@@ -7,29 +7,22 @@ using System.Threading.Tasks;
 namespace Golovanov_CG_lab2_24_02_25
 {
     
-    internal class Sobel:MatrixFilter
+    internal class Sobel:EdgeFilter
     {
-        public Sobel(AxisMode mode)
+        public Sobel()
         {
-            kernel = new float[3, 3];
+            kernelX = new float[3, 3];
+            kernelY = new float[3, 3];
             float[] stroke = new float[3] { 1, 2, 1 };
-            switch (mode)
+            for (int i = 0; i < 3; i++)
             {
-                case AxisMode.AxisX:
-                    for (int i = 0; i < 3; i++)
-                    {
-                        kernel[i, 0] = -stroke[i];
-                        kernel[i, 2] = stroke[i];
-                    }                   
-                    break;
-
-                case AxisMode.AxisY:
-                    for (int i = 0; i < 3; i++)
-                    {
-                        kernel[0, i] = -stroke[i];
-                        kernel[2, i] = stroke[i];
-                    }
-                    break;
+                kernelX[i, 0] = -stroke[i];
+                kernelX[i, 2] = stroke[i];
+            }                   
+            for (int i = 0; i < 3; i++)
+            {
+                kernelY[0, i] = -stroke[i];
+                kernelY[2, i] = stroke[i];
             }
         }
     }

@@ -7,26 +7,23 @@ using System.Threading.Tasks;
 
 namespace Golovanov_CG_lab2_24_02_25
 {
-    enum AxisMode
+    internal class Embossing:MatrixFilter
     {
-        AxisX,
-        AxisY
-    }
-    internal class MatrixFilter : Filter
-    {
-        protected float[,] kernel = null;
-        protected MatrixFilter() { }
-        public MatrixFilter(float[,] kernel)
+        public Embossing()
         {
-            this.kernel = kernel;
+            kernel = new float[3, 3]
+            {
+                {0, 1, 0 },
+                {-1, 0, 1 },
+                { 0, -1, 0 }
+            };
         }
-
         public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             int radiusX = kernel.GetLength(0) / 2;
             int radiusY = kernel.GetLength(1) / 2;
             float resultR = 0, resultG = 0, resultB = 0;
-            for (int l = -radiusY;l <= radiusY; l++)
+            for (int l = -radiusY; l <= radiusY; l++)
             {
                 for (int k = -radiusX; k <= radiusX; k++)
                 {
@@ -38,6 +35,9 @@ namespace Golovanov_CG_lab2_24_02_25
                     resultB += neighbourColor.B * kernel[k + radiusX, l + radiusY];
                 }
             }
+            resultR = Clamp((int)resultR + 100);
+            resultG = Clamp((int)resultG + 100);
+            resultB = Clamp((int)resultB + 100);
             return Color.FromArgb(Clamp((int)resultR), Clamp((int)resultG), Clamp((int)resultB));
         }
     }

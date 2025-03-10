@@ -177,14 +177,14 @@ namespace Golovanov_CG_lab2_24_02_25
         private void осьXToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckBusy();
-            Filter filter = new Prewitt(axisMode);
+            Filter filter = new Prewitt();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void осьXToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CheckBusy();
-            Filter filter = new Sobel(axisMode);
+            Filter filter = new Sobel();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
@@ -218,14 +218,14 @@ namespace Golovanov_CG_lab2_24_02_25
         private void осьYToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CheckBusy();
-            Filter filter = new Sobel(axisMode);
+            Filter filter = new Sobel();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void медианныйToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckBusy();
-            Filter filter = new Sobel(axisMode);
+            Filter filter = new Sobel();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
@@ -274,14 +274,42 @@ namespace Golovanov_CG_lab2_24_02_25
         private void собельToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckBusy();
-            Filter filter = new Sobel(axisMode);
+            Filter filter = new Sobel();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void операторПрюитаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckBusy();
-            Filter filter = new Prewitt(axisMode);
+            Filter filter = new Prewitt();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void стеклоToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBusy();
+            Filter filter = new Glass();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void щаарToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBusy();
+            Filter filter = new Sharr();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void тиснениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBusy();
+            Filter filter = new Embossing();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void заданиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBusy();
+            Filter filter = new CrossFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 

@@ -12,7 +12,7 @@ namespace Golovanov_CG_lab2_24_02_25
     {
         int allR = 0, allG = 0, allB = 0;
         float avg;
-        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             Color pixel = image.GetPixel(x, y);
             int pixelR = (int)((pixel.R * avg) / allR);

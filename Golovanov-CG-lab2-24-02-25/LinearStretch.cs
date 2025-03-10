@@ -20,7 +20,7 @@ namespace Golovanov_CG_lab2_24_02_25
             maxG = 0;
             maxB = 0;
         }
-        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             Color pixel = image.GetPixel(x, y);
             int nR = Clamp((pixel.R)*255/(maxR - minR));

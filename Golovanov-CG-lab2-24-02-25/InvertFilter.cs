@@ -10,7 +10,7 @@ namespace Golovanov_CG_lab2_24_02_25
 {
     internal class InvertFilter : Filter
     {
-        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             Color sourceColor = image.GetPixel(x, y);
             Color resultColor = Color.FromArgb(255-sourceColor.R, 

@@ -9,7 +9,7 @@ namespace Golovanov_CG_lab2_24_02_25
 {
     internal class GrayScaleFilter : Filter
     {
-        protected override Color CalculateNewPixelColor(Bitmap image, int x, int y)
+        public override Color CalculateNewPixelColor(Bitmap image, int x, int y)
         {
             Color pixel = image.GetPixel(x, y);
             int intensity =(int)(0.36*pixel.R + 0.53*pixel.G + 0.11*pixel.B);
